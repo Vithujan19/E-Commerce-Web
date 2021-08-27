@@ -14,6 +14,7 @@ const FormInput = ({ name, label }) => {
                 )}
                 control={control}
                 name={name}
+                defaultValue=""
             />
             {/* <Controller
                 as={TextField}

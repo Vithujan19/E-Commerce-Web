@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Typography, Button, Grid } from '@material-ui/core';
-import CartItems from './CartItems.js/CartItems';
+import { Container, Typography, Button, Grid, CssBaseline } from '@material-ui/core';
+import CartItems from './CartItems/CartItems';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
@@ -18,10 +18,11 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
     const FilledCart = () => (
         <>
+            <CssBaseline />
             <Grid container spacing={3}>
                 {cart.line_items.map((item) => (
                     <Grid item xs={12} sm={4} key={item}>
-                        <CartItems item={item} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart}/>
+                        <CartItems item={item} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} />
                     </Grid>
                 ))}
             </Grid>
@@ -40,9 +41,9 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     }
 
     return (
-        <Container>
+        <Container className={classes.container}>
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant='h3' gutterBottom>Your Shopping Cart</Typography>
+            <Typography className={classes.title} variant='h4' gutterBottom>Your Shopping Cart</Typography>
             {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
         </Container>
     )
